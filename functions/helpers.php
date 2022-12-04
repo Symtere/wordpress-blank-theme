@@ -116,6 +116,10 @@ function get_lib_url( $content )
 }
 
 // Shortcodes
+function get_brand_shortcode_icon()
+{
+    return get_img_url( 'custom/custom-32x32-1.png' );
+}
 function get_shortcode_dir($file)
 {
     return get_theme_file_uri('functions/shortcodes/' . $file);
@@ -212,7 +216,7 @@ function theme_customizer($wp_customize)
     ));
     */
 }
-add_action('customize_register', 'theme_customizer');
+//add_action('customize_register', 'theme_customizer');
 
 
 /*
@@ -349,8 +353,8 @@ function get_featured_img($id, $size = 'full', $default_url = 'default-img.gif')
 
     $img_id = get_post_thumbnail_id($id);
 
-    $img_url = wp_get_attachment_image_src( $img_id , $size );
-    $img_alt = get_post_meta( $img_id , '_wp_attachment_image_alt', true);
+    $img_url = wp_get_attachment_image_src($img_id,$size);
+    $img_alt = get_post_meta($img_id ,'_wp_attachment_image_alt',true);
 
     $field['url'] = $img_url ? (string) esc_url($img_url[0]) : get_img_url($default_url);
     $field['alt'] = $img_alt ? (string) esc_attr($img_alt) : '';

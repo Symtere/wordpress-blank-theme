@@ -2,8 +2,8 @@
 
 $files = [
     'settings',
-    'assets',
     'helpers',
+    'assets',
     'class-wp-bootstrap-navwalker',
     'login',
     'navs-menus',

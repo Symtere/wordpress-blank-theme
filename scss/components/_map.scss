@@ -17,8 +17,17 @@
     text-align: center;
 }
 button.gm-ui-hover-effect {
-    right: 0 $imp;
+    top: -3px $imp;
+    right: -3px $imp;
+    opacity: 1;
 
+    &:hover {
+        opacity: .7;
+    }
+
+    span {
+        background-color: #fff;
+    }
     img {
         width: 20px $imp;
         height: 20px $imp;

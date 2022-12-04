@@ -1,6 +1,8 @@
 <?php
+$class_name = $args && array_key_exists('class_name',$args) ? ' ' . $args['class_name'] : '';
 $taxonomy = $args && array_key_exists('taxonomy',$args) ? $args['taxonomy'] : '';
-$taxonomy_rest_name = $args && array_key_exists('taxonomy_rest_name',$args) ? $args['taxonomy_rest_name'] : $taxonomy ;
+$taxonomy_label = get_taxonomy( $taxonomy ) ? get_taxonomy( $taxonomy )->label : '';
+$taxonomy_rest_name = $args && array_key_exists('taxonomy_rest_name',$args) ? $args['taxonomy_rest_name'] : $taxonomy;
 $filter_title = $args && array_key_exists('filter_title',$args) ? '<div class="filter-by-label">'. $args['filter_title'] .'</div>' : '';
 $terms = $args && array_key_exists('terms',$args) && is_array($args['terms']) && ! is_wp_error($args['terms']) ? $args['terms'] : false;
 $btn_class = $args && array_key_exists('btn_class',$args) ? $args['btn_class'] : 'btn-outline-primary';
@@ -11,25 +13,27 @@ $uniqid = uniqid();
 $taxonomy_id = esc_attr($uniqid . '-' . $taxonomy_rest_name);
 
 if ( $terms ) : ?>
-    <div class="filter-by" data-filtertype="button-checkbox" data-taxonomy="<?php echo esc_attr($taxonomy_rest_name); ?>">
+    <div class="filter-by<?php echo $class_name; ?>" data-filtertype="button-checkbox" data-taxonomy="<?php echo esc_attr($taxonomy_rest_name); ?>" data-label="<?php echo $taxonomy_label; ?>">
         <?php echo $filter_title; ?>
-        <?php if ( $display_checkbox_all ) : ?>
-            <div class="btn-group form-check-all">
-                <input class="btn-check form-check-input form-check-input-all" type="checkbox" name="<?php echo esc_attr($taxonomy_rest_name); ?>[]" id="<?php echo $taxonomy_id; ?>-all" value="" checked>
-                <label class="btn <?php echo $btn_class; ?> form-check-label form-check-label-all" for="<?php echo $taxonomy_id; ?>-all">Tout</label>
-            </div>
-        <?php endif; ?>
-        <?php foreach ($terms as $t) :
-            $term_id = esc_attr($uniqid . '-' . $t->term_id);
-            $count = esc_attr($t->count);
-            $counter = $display_count ? sprintf(' (%s)',$count) : '';
+        <div class="filter-row fr-<?php echo $btn_class; ?>">
+            <?php if ( $display_checkbox_all ) : ?>
+                <div class="btn-group form-check-all">
+                    <input class="btn-check form-check-input form-check-input-all" type="checkbox" name="<?php echo esc_attr($taxonomy_rest_name); ?>[]" id="<?php echo $taxonomy_id; ?>-all" value="" checked>
+                    <label class="btn <?php echo $btn_class; ?> form-check-label form-check-label-all" for="<?php echo $taxonomy_id; ?>-all">Tout</label>
+                </div>
+            <?php endif; ?>
+            <?php foreach ($terms as $t) :
+                $term_id = esc_attr($uniqid . '-' . $t->term_id);
+                $count = esc_attr($t->count);
+                $counter = $display_count ? sprintf(' (%s)',$count) : '';
 
-            if ( $count > $limit_by_count ) :
-        ?>
-            <div class="btn-group form-check">
-                <input class="btn-check" type="checkbox" id="<?php echo $term_id; ?>" name="<?php echo $term_id; ?>[]" value="<?php echo esc_attr($t->term_id); ?>">
-                <label class="btn <?php echo $btn_class; ?>" for="<?php echo $term_id; ?>"><?php echo esc_attr($t->name); ?><?php echo $counter; ?></label>
-            </div>
-        <?php endif; endforeach; ?>
+                if ( $count > $limit_by_count ) :
+            ?>
+                <div class="btn-group form-check">
+                    <input class="btn-check" type="checkbox" id="<?php echo $term_id; ?>" name="<?php echo $term_id; ?>[]" value="<?php echo esc_attr($t->term_id); ?>">
+                    <label class="btn form-check-label <?php echo $btn_class; ?>" for="<?php echo $term_id; ?>"><?php echo esc_attr($t->name); ?><?php echo $counter; ?></label>
+                </div>
+            <?php endif; endforeach; ?>
+        </div>
     </div>
 <?php endif; ?>

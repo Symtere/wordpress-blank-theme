@@ -71,48 +71,6 @@ const swiperLoader = {
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
-    //== TODO :: Example slider => remove me if unecessary
-    function exampleSlider() {
-
-        const relatedProductsId = document.getElementById('related-products-slider');
-        if ( relatedProductsId != null ) {
-
-            const relatedProductsSwiper = new Swiper(relatedProductsId, {
-                slidesPerView: 1.4,
-                spaceBetween: 15,
-                allowTouchMove: true,
-                watchOverflow: true,
-                centeredSlidesBounds: true,
-                lazyLoading: true,
-                grabCursor: true,
-                pagination: {
-                    el: '.products-slider-pagination',
-                    type: 'bullets',
-                    clickable: true,
-                },
-                breakpoints: {
-                    0: {
-                        slidesPerView: 1.3,
-                        spaceBetween: 15,
-                        centeredSlidesBounds: true,
-                    },
-                    569: {
-                        slidesPerView: 2,
-                        spaceBetween: 15,
-                        centeredSlidesBounds: false,
-                    },
-                    892: {
-                        slidesPerView: 3,
-
-                    }
-                },
-                ...swiperLoader
-            });
-        }
-    }
-    // exampleSlider();
-
-
     //== Parallax
     function setBannerParallax() {
         const banners = document.querySelectorAll('.wp-block-cover.is-style-has-parallax');

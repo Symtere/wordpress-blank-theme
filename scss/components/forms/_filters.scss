@@ -1,35 +1,3 @@
-.informations-area {
-    margin-bottom: 1.5rem;
-    text-align: right;
-    color: $primary;
-
-    &[data-status="ia-empty"] {
-        color: $dark;
-    }
-    &[data-status="ia-error"] {
-        color: $danger;
-    }
-    &[data-status="ia-total"] {
-
-    }
-    &[data-status="ia-loading"] {
-
-    }
-}
-
-.pagination-area {
-    margin: 1.5rem 0 2.5rem;
-}
-
-.loadmore-pagination {
-    text-align: center;
-}
-.basic-pagination {
-
-    .nav-links-container {
-        justify-content: center;
-    }
-}
 .filter-by {
     margin-bottom: 1.5rem;
 }
@@ -38,41 +6,72 @@
     font-weight: 700;
 }
 
-.app-container {
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 4px;
+    padding-top: .5rem;
 
-    .form-check-all {
+    .filter-row-center & {
+        justify-content: center;
+    }
 
-        &.disabled {
-            pointer-events: none;
+    .btn {
+        margin-bottom: .5rem;
+
+        + .btn {
+            margin-left: 4px;
         }
     }
 
-    &:not(.loading-success) {
-        opacity: 1;
-        transition: .5s;
+    .btn-group {
+        display: inline-block;
+        padding-left: 0;
 
-        .search-area,
-        .filters-area,
-        .pagination-pagination,
-        .loadmore-pagination {
+        + .btn-group {
+            padding-left: 1rem;
+        }
+    }
+}
+
+.form-check-all {
+
+    .btn-check {
+
+        &:checked {
             pointer-events: none;
         }
-        .filters-area,
-        .pagination-pagination,
-        .loadmore-pagination {
-            opacity: .4;
+    }
+}
+
+//== Customize
+/*
+.fr-btn-xxx {
+
+    .btn-check {
+
+        &:checked {
+
+            + .btn {
+                background-color: $black;
+                color: #fff;
+
+                &.label-all {
+                    pointer-events: none;
+                }
+            }
         }
-        .search-area {
+        &:focus {
 
-            button {
-
-                i {
-                    display: none;
-                }
-                span {
-                    display: inline-block $imp;
-                }
+            + .btn {
+                box-shadow: 0 0 0 0.25rem rgb(204 207 211 / 60%);
             }
         }
     }
 }
+// OR
+
+.filter-by.my-class-name {
+    ...
+}
+*/

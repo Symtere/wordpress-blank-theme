@@ -10,6 +10,7 @@
         padding-left: 15px;
         padding-right: 15px;
 
+        > .wp-block-group,
         > .wp-block-group__inner-container {
             max-width: map-get($container-max-widths,'xxl');
             margin-left: auto;

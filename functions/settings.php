@@ -116,6 +116,19 @@ if (!function_exists('we_theme_support'))
 }
 add_action('after_setup_theme', 'we_theme_support');
 
+
+/*
+   Disable additional CSS from customizer
+   ========================================================================== */
+
+function customizer_remove_css_section( $wp_customize ) {
+    $wp_customize->remove_control( 'custom_logo' );
+    $wp_customize->remove_control( 'site_icon' );
+	$wp_customize->remove_section( 'custom_css' );
+}
+add_action( 'customize_register', 'customizer_remove_css_section', 50 );
+
+
 /*
    Gutenberg settings
    ========================================================================== */

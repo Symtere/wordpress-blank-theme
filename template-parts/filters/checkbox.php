@@ -1,6 +1,8 @@
 <?php
+$class_name = $args && array_key_exists('class_name',$args) ? ' ' . $args['class_name'] : '';
 $taxonomy = $args && array_key_exists('taxonomy',$args) ? $args['taxonomy'] : '';
-$taxonomy_rest_name = $args && array_key_exists('taxonomy_rest_name',$args) ? $args['taxonomy_rest_name'] : $taxonomy ;
+$taxonomy_label = get_taxonomy( $taxonomy ) ? get_taxonomy( $taxonomy )->label : '';
+$taxonomy_rest_name = $args && array_key_exists('taxonomy_rest_name',$args) ? $args['taxonomy_rest_name'] : $taxonomy;
 $filter_title = $args && array_key_exists('filter_title',$args) ? '<div class="filter-by-label">'. $args['filter_title'] .'</div>' : '';
 $filter_all_text = $args && array_key_exists('filter_all_text',$args) ? $args['filter_all_text'] : 'Tout';
 $terms = $args && array_key_exists('terms',$args) && is_array($args['terms']) && ! is_wp_error($args['terms']) ? $args['terms'] : false;
@@ -12,7 +14,7 @@ $taxonomy_id = esc_attr($uniqid . '-' . $taxonomy_rest_name);
 //d($terms);
 
 if ( $terms ) : ?>
-    <div class="filter-by" data-filtertype="checkbox" data-taxonomy="<?php echo esc_attr($taxonomy_rest_name); ?>">
+    <div class="filter-by<?php echo $class_name; ?>" data-filtertype="checkbox" data-taxonomy="<?php echo esc_attr($taxonomy_rest_name); ?>" data-label="<?php echo $taxonomy_label; ?>">
         <?php echo $filter_title; ?>
         <?php if ( $display_checkbox_all ) : ?>
             <div class="form-check form-check-all disabled">

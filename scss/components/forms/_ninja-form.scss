@@ -12,7 +12,7 @@
 
     &:not(input[type="button"]) {
         background-color: $input-bg $imp;
-        border-radius: $border-radius $imp;
+        border-radius: $input-border-radius $imp;
         border-color: $input-border-color $imp;
         //font-family: $ff-open;
         font-size: .85rem;
@@ -75,6 +75,22 @@
 }
 .nf-after-form-content {
     margin-bottom: 2rem;
+}
+
+.checkbox-label {
+
+    label {
+        color: $input-placeholder-color $imp;
+        font-size: 12px $imp;
+        line-height: 1.2 $imp;
+    }
+}
+.checkbox-wrap .nf-field-element label.nf-checked-label:before, .checkbox-wrap .nf-field-label label.nf-checked-label:before,
+.listcheckbox-wrap .nf-field-element label.nf-checked-label:before, .listcheckbox-wrap .nf-field-label label.nf-checked-label:before {
+    color: $primary $imp;
+    font-size: 14px $imp;
+    left: -26px $imp;
+    top: 1px $imp;
 }
 
 .field-wrap .nf-field-element:after {

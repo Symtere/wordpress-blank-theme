@@ -51,6 +51,8 @@ if (!function_exists('we_theme_gut_support')) {
         $green_400 = '#28e47c';
         $green_varient_500 = '#3b9f68';
 
+        $black_700 = '#142128';
+
         $white_label = esc_attr('Blanc');
         $black_label = esc_attr('Noir');
         $gray_label = esc_attr('Gris');
@@ -98,6 +100,11 @@ if (!function_exists('we_theme_gut_support')) {
                     'name'  => $green_label . $variant_label,
                     'slug'  => 'green-variant-500',
                     'color' => $green_varient_500,
+                ),
+                array(
+                    'name'  => $black_label,
+                    'slug'  => 'black-700',
+                    'color' => $black_700,
                 ),
             )
         );

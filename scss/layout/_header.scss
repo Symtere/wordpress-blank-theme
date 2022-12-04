@@ -1,5 +1,5 @@
 @mixin sticky-header() {
-    background-color: #fff;
+    background-color: rgba(#142128,1);
     box-shadow: 0 0 10px rgba(#000,.3);
 }
 
@@ -11,9 +11,9 @@
     right: 0;
     width: 100%;
     z-index: $zindex-sticky;
-    background-color: transparent;
-    transition: .5s ease-in-out;
+    background-color: rgba(#0f1417,.5);
     box-shadow: 0 0 10px rgba(#000,0);
+    transition: .5s ease-in-out;
 
     .has-header-bg & {
         @include sticky-header();
@@ -27,11 +27,17 @@
         .main-nav {
             margin-top: 0;
         }
+        .brand-h-logo {
+            //filter: unset;
+        }
     }
 }
 
 .brand-header {
     padding: 1rem 0;
+}
+.brand-h-logo {
+    filter: brightness(0) invert(1);
 }
 
 .main-nav {

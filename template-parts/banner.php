@@ -39,7 +39,7 @@ $banner = '<!-- wp:cover {"url":"'. $banner_img_url .'","dimRatio":'. $opacity  
 <span aria-hidden="true" class="wp-block-cover__background has-background-dim has-background-dim-'. $opacity  . $background_gradient_class .'"'. $background_color . $background_gradient .'></span>
 ' . $img . '
 <div class="wp-block-cover__inner-container">
-' . $title_html . $breadcrumb .'
+' . $title . $breadcrumb .'
 </div></div>
 <!-- /wp:cover -->';
 

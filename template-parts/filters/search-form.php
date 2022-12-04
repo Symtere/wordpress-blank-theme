@@ -1,7 +1,7 @@
 <?php
     $input_id = $args && array_key_exists('id',$args) ? $args['id'] : uniqid();
     $container_class_name = $args && array_key_exists('container_class_name',$args) ? $args['container_class_name'] : 'search-area';
-    $class_name = $args && array_key_exists('class_name',$args) ? $args['class_name'] . ' ' : 'app-search-form ';
+    $class_name = $args && array_key_exists('class_name',$args) ? $args['class_name'] . ' ' : 'app-search-form';
     $placeholder = $args && array_key_exists('placeholder',$args) ? $args['placeholder'] : 'Que recherchez-vous ?';
     $autocomplete = $args && array_key_exists('autocomplete',$args) ? $args['autocomplete'] : 'off';
     $autofocus = $args && array_key_exists('autofocus',$args) ? ' autofocus' : '';

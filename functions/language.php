@@ -50,23 +50,25 @@ function languages_list_header()
    Weglot
    ========================================================================== */
 
-function weglot_languages_list_header() {
+if ( is_plugin_active('weglot/weglot.php') ) {
 
-    if ( function_exists('weglot_get_button_selector_html') ) {
-        echo weglot_get_button_selector_html('lang-switch weglot-switch');
+
+    function weglot_languages_list_header() {
+
+        if ( function_exists('weglot_get_button_selector_html') ) {
+            echo weglot_get_button_selector_html('lang-switch weglot-switch');
+        }
     }
-}
 
-//== Weglot form translations
-if ( has_filter('weglot_get_regex_checkers') ) {
 
-    function custom_weglot_add_regex_checkers( $regex_checkers )
-    {
-        $regex_checkers[] = new \Weglot\Parser\Check\Regex\RegexChecker( '#"placeholder":"(.*?)"#', 'TEXT', 1 );
-        $regex_checkers[] = new \Weglot\Parser\Check\Regex\RegexChecker( '#"label":"(.*?)"#', 'TEXT', 1 );
-        $regex_checkers[] = new \Weglot\Parser\Check\Regex\RegexChecker( '#"select_files_text":"(.*?)"#', 'TEXT', 1 );
+        function custom_weglot_add_regex_checkers( $regex_checkers )
+        {
 
-        return $regex_checkers;
+            $regex_checkers[] = new \Weglot\Parser\Check\Regex\RegexChecker( '#"placeholder":"(.*?)"#', 'TEXT', 1 );
+            $regex_checkers[] = new \Weglot\Parser\Check\Regex\RegexChecker( '#"label":"(.*?)"#', 'TEXT', 1 );
+            $regex_checkers[] = new \Weglot\Parser\Check\Regex\RegexChecker( '#"select_files_text":"(.*?)"#', 'TEXT', 1 );
+
+            return $regex_checkers;
     }
-    //add_filter( 'weglot_get_regex_checkers', 'custom_weglot_add_regex_checkers' );
+    add_filter( 'weglot_get_regex_checkers', 'custom_weglot_add_regex_checkers' );
 }
